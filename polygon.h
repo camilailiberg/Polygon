@@ -23,4 +23,4 @@ typedef struct {
     Vertex* vertexList
 } Polygon;
 
-void handleAdd() ;
+// void handleAdd() ;
