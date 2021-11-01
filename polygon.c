@@ -27,6 +27,15 @@ char getCommandWord(char command[], int maxLength, char* delimiter) {
 	return c;
 }
 
+char getLine(char* line, int maxLength) {
+	char lastCharacter;
+	int i;
+	for (i = 0; i < maxLength - 1 && (line[i] = getchar()) != '\n' && line[i] != EOF; i++);
+	lastCharacter = line[i++];
+	line[i] = '\0';//end of string sign
+	return lastCharacter;
+}
+
 int getKeys(int* keys) {
 	int i = 0;
 	char temp[MAX_COMMAND_TOKEN_LENGTH];
@@ -41,17 +50,18 @@ int getKeys(int* keys) {
 
 void main(int argc, char** argv) {
 
-    // int numberOfPolygons = atoi(argv[1]) ; // equals to the max number of poygons i can get
+    int numberOfPolygons = atoi(argv[1]) ; //? equals to the max number of poygons i can get
 
-    // printf("numberOfPolygons = %d\n", numberOfPolygons ); //TODO: DELETE
+    printf("numberOfPolygons = %d\n", numberOfPolygons ); //TODO: DELETE
 
-    // Polygon listOfPlygons[ numberOfPolygons ] ; 
+    Polygon listOfPlygons[ numberOfPolygons ] ; //? list of polygons
 
     char command[MAX_COMMAND_TOKEN_LENGTH];
-    char lastCharacter;
+    char lastCharacter, *verticesLine;
 
     while (1) {//infinite while loop...
         lastCharacter = getCommandWord(command, MAX_COMMAND_TOKEN_LENGTH, " ");
+        printf("command = %s\n", command);
         if (strcmp(command, "quit") == 0)//if command === "quit"
             break;
         else if (!strcmp(command, "add"))//if command == "add"
@@ -60,7 +70,9 @@ void main(int argc, char** argv) {
                 printf("Too few arguments for add command! It must be in the form of TODO: ADD FORMAT.\n"); //TODO: TODO: ADD FORMAT
             else
             {
-                printf("add");
+                printf("add\n");
+                lastCharacter = getLine(verticesLine, MAX_COMMAND_TOKEN_LENGTH);
+                printf("command inside add= %s\n", &verticesLine);
                 // handleAdd();
 
             }
