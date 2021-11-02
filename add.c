@@ -1,19 +1,8 @@
 #include "polygon.h"
 
-// int getNumOfVertices(char * vertices)
-// {
-//     int amountOfCoordinates = strlen(vertices); //TODO: DELETE
-//     printf("amountOfCoordinates = %d\n", amountOfCoordinates); //TODO: DELETE
-//     printf("Actual amountOfCoordinates = %d\n", (amountOfCoordinates/2 )+ 1); //TODO: DELETE
-//     return 1;
-// }
-
 Polygon * handleAdd(char * rest)
 {
     //* rest is the coordinates.
-
-    //? as long as i have vertices in my list, create a vertex and add it to the vertexList of that polygon. 
-    //? Keep in mind that the argument that i get from the user will be in the format add x1 y1 x2 y2 ...  so i need to divide the length by 2 to get the amount of vertices
     
     int amountOfCoordinates = (strlen(rest) / 2) + 1 ; //? this counts every (x,y) vertex as 2 because +1 for x and +1 for y
     // printf("\namountOfVertices = %d\n\n", amountOfCoordinates) ; //TODO: DELETE
@@ -27,7 +16,7 @@ Polygon * handleAdd(char * rest)
     rest[n] = '\n';
     rest[n+1] = '\0'; //! lo cambie de '0' a '\0' TODO: OJOOOOO
 
-    for(i = 0 ; i < strlen(rest) ; i = i + 2)
+    for(i = 0 ; i < p->numberOfVertices ; i++)
     {
         if(sscanf(rest, "%d %d %[^\n]\n", &x, &y, rest) != 3)
         {
@@ -47,11 +36,13 @@ Polygon * handleAdd(char * rest)
         }
 
     }
-    // printf("\nnumberOfVertices = %d\n\n", p->numberOfVertices) ; //TODO: DELETE
-    // printf("p x = %d\n", p->vertexList[0].x); //TODO: DELETE
-    // printf("p y = %d\n", p->vertexList[0].y); //TODO: DELETE
-    // printf("p x = %d\n", p->vertexList[1].x); //TODO: DELETE
-    // printf("p y = %d\n", p->vertexList[1].y); //TODO: DELETE
+    printf("\n\nnumberOfVertices = %d\n\n", p->numberOfVertices) ; //TODO: DELETE
+    printf("p x = %d\n", p->vertexList[0].x); //TODO: DELETE
+    printf("p y = %d\n", p->vertexList[0].y); //TODO: DELETE
+    printf("p x = %d\n", p->vertexList[1].x); //TODO: DELETE
+    printf("p y = %d\n", p->vertexList[1].y); //TODO: DELETE
+    printf("p x = %d\n", p->vertexList[2].x); //TODO: DELETE
+    printf("p y = %d\n\n", p->vertexList[2].y); //TODO: DELETE
 
     return p;
 
