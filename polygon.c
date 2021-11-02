@@ -1,66 +1,64 @@
 #include "polygon.h"
 
-char getCommandWord(char command[], int maxLength, char* delimiter) {
-	char c;
-	int i = 0, j, n = strlen(delimiter);
-	while (isspace(c = getchar()));//skip leading white spaces
-	while (i < maxLength - 1 && c != EOF) {
-		j = -1;
-		while (delimiter[++j] && delimiter[j] != c);
-		if (j != n)
-			break;
-		if (isspace(c))
-			break;
-		else {
-			command[i++] = c;
-			c = getchar();
-		}
-	}
-	command[i] = '\0';//end of string sign
-	if (!isspace(c))
-		return c;
-	while(*delimiter)
-		if(isspace(*(delimiter++)))
-			return c;
-	while (isspace(c))// skip trailing white spaces
-		c = getchar();
-	return c;
-}
-
-char getLine(char* line, int maxLength) {
-	char lastCharacter;
-	int i;
-	for (i = 0; i < maxLength - 1 && (line[i] = getchar()) != '\n' && line[i] != EOF; i++);
-	lastCharacter = line[i++];
-	line[i] = '\0';//end of string sign
-	return lastCharacter;
-}
-
-int getKeys(int* keys) {
-	int i = 0;
-	char temp[MAX_COMMAND_TOKEN_LENGTH];
-	while (getCommandWord(temp, MAX_COMMAND_TOKEN_LENGTH, " ") != '\n')
-		if (i == 300)
-			return  0;
-		else
-			keys[i++] = atoi(temp);
-	keys[i++] = atoi(temp);
-	return i;
-}
-
 void main(int argc, char** argv) {
 
     int numberOfPolygons = atoi(argv[1]) ; //? equals to the max number of poygons i can get
 
     printf("numberOfPolygons = %d\n", numberOfPolygons ); //TODO: DELETE
 
-    Polygon listOfPlygons[ numberOfPolygons ] ; //? list of polygons
+    //? allocating space
+    //? polygonList is a list of Polygon pointer to list of pointers to Polygons
+    Polygon** polygonList = (Polygon**)malloc((numberOfPolygons) * sizeof(Polygon));
 
-    char command[MAX_COMMAND_TOKEN_LENGTH];
+    // Polygon listOfPlygons[ numberOfPolygons ] ; //? list of polygons
+
+    // char command[MAX_COMMAND_TOKEN_LENGTH];
     char lastCharacter, *verticesLine;
 
+    char command[100];
+    char tokentemp[20];
+    char firsttoken[20];
+    char rest[100];
+    char *token [3];
+    int polygonindex;
+
+    // strcpy(command, "add 3 4 1 2 3 4 5 6 7 8 9 1\n");
     while (1) {//infinite while loop...
-        lastCharacter = getCommandWord(command, MAX_COMMAND_TOKEN_LENGTH, " ");
+        sscanf(command, "%s %[^\n]\n", firsttoken, rest);
+        if(!strcmp(firsttoken, "quit")){
+            printf("firsttoken is %s\n", firsttoken);
+            printf("rest is %s\n", rest);
+        }
+        if(!strcmp(firsttoken, "summary")){
+            printf("firsttoken is %s\n", firsttoken);
+            printf("rest is %s\n", rest);
+        }
+        if(!strcmp(firsttoken, "shift")){
+            printf("firsttoken is %s\n", firsttoken);
+            printf("rest is %s\n", rest);
+        }
+        if(!strcmp(firsttoken, "turn")){
+            printf("firsttoken is %s\n", firsttoken);
+            printf("rest is %s\n", rest);
+        }
+        if(!strcmp(firsttoken, "add")){
+            // printf("rest is %s\n", rest);
+            // int n = strlen(rest), x, y;
+            // rest[n] = '\n';
+            // rest[n+1] = '0';
+            // if(sscanf(rest, "%d %d %[^\n]\n", &x, &y, rest) != 3)
+            //     printf("Error");
+            // else
+            //     printf("coordinate of the first point is (%d, %d), and the rest is %s", x, y, rest);
+            printf("firsttoken is %s\n", firsttoken);
+            printf("rest is %s\n", rest);
+        }
+    }
+
+    /*
+    while (1) {//infinite while loop...
+		//? getting the first  word
+        sscanf(command, "%s %[^\n]\n", firsttoken, rest);
         printf("command = %s\n", command);
         if (strcmp(command, "quit") == 0)//if command === "quit"
             break;
@@ -87,5 +85,6 @@ void main(int argc, char** argv) {
                 lastCharacter = getCommandWord(command, MAX_COMMAND_TOKEN_LENGTH, " ");
         }
     }
+    */
 
 }
