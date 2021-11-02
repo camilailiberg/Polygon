@@ -6,9 +6,10 @@ void main(int argc, char** argv) {
 
     printf("numberOfPolygons = %d\n", numberOfPolygons ); //TODO: DELETE
 
-    //? allocating space
-    //? polygonList is a list of Polygon pointer to list of pointers to Polygons
-    Polygon** polygonList = (Polygon**)malloc((numberOfPolygons) * sizeof(Polygon));
+    //* polygonList: is a list of Polygon pointer to list of pointers to Polygons
+    //* currPolyCount: is how many polygons the user actually adds. starts at 0 because initially we have no polygons
+    Polygon** polygonList = (Polygon**)malloc((numberOfPolygons) * sizeof(Polygon)); //? allocating space
+    int currPolyCount = 0;
 
     char command[MAX_COMMAND_TOKEN_LENGTH];
     char lastCharacter, *verticesLine;
@@ -29,31 +30,59 @@ void main(int argc, char** argv) {
 
         sscanf(command, "%s %[^\n]\n", firsttoken, rest);
         if(!strcmp(firsttoken, "quit")){
-            printf("rest is %s\n", rest); //TODO: DELETE
-            printf("firsttoken is %s\n", firsttoken); //TODO: DELETE
             break ;
         }
         if(!strcmp(firsttoken, "summary")){
             printf("firsttoken is %s\n", firsttoken); //TODO: DELETE
             printf("rest is %s\n", rest); //TODO: DELETE
 
-            //* ADD CODE FOR HANDLING ADD
+            //* ADD CODE FOR HANDLING SUMMARY
+
         }
         if(!strcmp(firsttoken, "add")){
             printf("firsttoken is %s\n", firsttoken); //TODO: DELETE
             printf("rest is %s\n", rest); //TODO: DELETE
+            // int amountOfCoordinates = strlen(rest); //TODO: DELETE
+            // printf("amountOfCoordinates = %d\n", amountOfCoordinates); //TODO: DELETE
+            // printf("Actual amountOfCoordinates = %d\n", (amountOfCoordinates/2 )+ 1); //TODO: DELETE
 
-            int n = strlen(rest), x, y;
-            rest[n] = '\n';
-            rest[n+1] = '\0'; //! lo cambie de '0' a '\0' TODO: OJOOOOO
-            if(sscanf(rest, "%d %d %[^\n]\n", &x, &y, rest) != 3)
-                printf("Error");
-            else{
-                printf("coordinate of the first point is (%d, %d), and the rest is %s", x, y, rest);
+            // break;
+            // Polygon *p = handleAdd(rest);
 
-                //* ADD CODE FOR HANDLING ADD
+            // int n = strlen(rest), x, y;
+            // rest[n] = '\n';
+            // rest[n+1] = '\0'; //! lo cambie de '0' a '\0' TODO: OJOOOOO
+            // if(sscanf(rest, "%d %d %[^\n]\n", &x, &y, rest) != 3)
+            //     printf("Error");
+            // else{
+            //     printf("coordinate of the first point is (%d, %d), and the rest is %s", x, y, rest);
 
+            //     //* ADD CODE FOR HANDLING ADD
+            //     //? increasing amount of polygons
+                polygonList[currPolyCount] = handleAdd(rest);
+                currPolyCount++;
+
+            //     //? create function that accepts the rest and 
+            //     Vertex vertex = {x, y};
+
+            // }
+
+            for(int h = 0 ; h < currPolyCount ; h++)
+            {
+                printf("Polygon %d in polygonList\n", h);
+                for(int g = 0 ; g < polygonList[h]->numberOfVertices ; g++)
+                {
+                    ("x = \n", polygonList[h]->vertexList[g].x );
+                    ("y = \n\n", polygonList[h]->vertexList[g].y );
+                }
             }
+
+            // printf("currPolyCount = %d\n", currPolyCount); //TODO: DELETE
+            // printf("x = %d\n", polygonList[0]->vertexList->x); //TODO: DELETE
+            // printf("y = %d\n", polygonList[0]->vertexList->y); //TODO: DELETE
+            // polygonList[0]->vertexList++; //TODO: DELETE
+            // printf("x = %d\n", polygonList[0]->vertexList->x); //TODO: DELETE
+            // printf("y = %d\n", polygonList[0]->vertexList->y); //TODO: DELETE
         }
         if(!strcmp(firsttoken, "shift")){
             printf("SHIFT WAS NOT IMPLEMENTED\n");
