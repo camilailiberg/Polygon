@@ -70,10 +70,13 @@ void main(int argc, char** argv) {
             for(int h = 0 ; h < currPolyCount ; h++)
             {
                 printf("Polygon %d in polygonList\n", h);
+                printf("NUMBEROFVERTICES = %d\n", polygonList[h]->numberOfVertices);
+
                 for(int g = 0 ; g < polygonList[h]->numberOfVertices ; g++)
                 {
-                    ("x = \n", polygonList[h]->vertexList[g].x );
-                    ("y = \n\n", polygonList[h]->vertexList[g].y );
+                    
+                    printf("x = %d\n", polygonList[h]->vertexList[g].x );
+                    printf("y = %d\n\n", polygonList[h]->vertexList[g].y );
                 }
             }
 
