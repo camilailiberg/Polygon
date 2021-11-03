@@ -24,3 +24,4 @@ typedef struct {
 } Polygon;
 
 Polygon *  handleAdd(char* rest) ;
+void handleSummary(Polygon** polygonList , int currPolyCount);

@@ -20,15 +20,14 @@ Polygon * handleAdd(char * rest)
     {
         if(sscanf(rest, "%d %d %[^\n]\n", &x, &y, rest) != 3)
         {
-            // printf("Error");
             sscanf(rest, "%d %d %[^\n]\n", &x, &y);
-            printf("coordinate of the final point is (%d, %d)\n", x, y);
+            // printf("coordinate of the final point is (%d, %d)\n", x, y); //TODO: DELETE
             p->vertexList[j].x = x;
             p->vertexList[j].y = y;
             j++;
         }
         else{
-            printf("coordinate of the first point is (%d, %d), and the rest is %s\n", x, y, rest);
+            // printf("coordinate of the first point is (%d, %d), and the rest is %s\n", x, y, rest);//TODO:DELETE
 
             p->vertexList[j].x = x;
             p->vertexList[j].y = y;
@@ -36,13 +35,13 @@ Polygon * handleAdd(char * rest)
         }
 
     }
-    printf("\n\nnumberOfVertices = %d\n\n", p->numberOfVertices) ; //TODO: DELETE
-    printf("p x = %d\n", p->vertexList[0].x); //TODO: DELETE
-    printf("p y = %d\n", p->vertexList[0].y); //TODO: DELETE
-    printf("p x = %d\n", p->vertexList[1].x); //TODO: DELETE
-    printf("p y = %d\n", p->vertexList[1].y); //TODO: DELETE
-    printf("p x = %d\n", p->vertexList[2].x); //TODO: DELETE
-    printf("p y = %d\n\n", p->vertexList[2].y); //TODO: DELETE
+    // printf("\n\nnumberOfVertices = %d\n\n", p->numberOfVertices) ; //TODO: DELETE
+    // printf("p x = %d\n", p->vertexList[0].x); //TODO: DELETE
+    // printf("p y = %d\n", p->vertexList[0].y); //TODO: DELETE
+    // printf("p x = %d\n", p->vertexList[1].x); //TODO: DELETE
+    // printf("p y = %d\n", p->vertexList[1].y); //TODO: DELETE
+    // printf("p x = %d\n", p->vertexList[2].x); //TODO: DELETE
+    // printf("p y = %d\n\n", p->vertexList[2].y); //TODO: DELETE
 
     return p;
 

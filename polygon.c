@@ -26,40 +26,40 @@ void main(int argc, char** argv) {
         //?getting the user input and storing it in command.
         //?  Here, [] is the scanset character. ^\n tells to take input until newline doesn’t get encountered. Then, with this %*c, it reads newline character and here used * indicates that this newline character is discarded.
         scanf("%[^\n]%*c", command);
-        printf("command = %s\n", command); //TODO: DELETE
+        // printf("command = %s\n", command); //TODO: DELETE
 
         sscanf(command, "%s %[^\n]\n", firsttoken, rest);
         if(!strcmp(firsttoken, "quit")){
             break ;
         }
         if(!strcmp(firsttoken, "summary")){
-            printf("firsttoken is %s\n", firsttoken); //TODO: DELETE
-            printf("rest is %s\n", rest); //TODO: DELETE
+            // printf("firsttoken is %s\n", firsttoken); //TODO: DELETE
+            // printf("rest is %s\n", rest); //TODO: DELETE
 
-            //* ADD CODE FOR HANDLING SUMMARY
+            handleSummary(polygonList, currPolyCount);
 
         }
         if(!strcmp(firsttoken, "add")){
-            printf("firsttoken is %s\n", firsttoken); //TODO: DELETE
-            printf("rest is %s\n", rest); //TODO: DELETE
+            // printf("firsttoken is %s\n", firsttoken); //TODO: DELETE
+            // printf("rest is %s\n", rest); //TODO: DELETE
 
             //* ADD CODE FOR HANDLING ADD
             polygonList[currPolyCount] = handleAdd(rest);
             currPolyCount++;
 
             //TODO: DELETE[
-            for(int h = 0 ; h < currPolyCount ; h++)
-            {
-                printf("Polygon %d in polygonList\n", h);
-                printf("NUMBEROFVERTICES = %d\n", polygonList[h]->numberOfVertices);
+            // for(int h = 0 ; h < currPolyCount ; h++)
+            // {
+            //     printf("Polygon %d in polygonList\n", h);
+            //     printf("NUMBEROFVERTICES = %d\n", polygonList[h]->numberOfVertices);
 
-                for(int g = 0 ; g < polygonList[h]->numberOfVertices ; g++)
-                {
+            //     for(int g = 0 ; g < polygonList[h]->numberOfVertices ; g++)
+            //     {
                     
-                    printf("x = %d\n", polygonList[h]->vertexList[g].x );
-                    printf("y = %d\n\n", polygonList[h]->vertexList[g].y );
-                }
-            }
+            //         printf("x = %d\n", polygonList[h]->vertexList[g].x );
+            //         printf("y = %d\n\n", polygonList[h]->vertexList[g].y );
+            //     }
+            // }
             //TODO: DELETE ]
 
             // printf("currPolyCount = %d\n", currPolyCount); //TODO: DELETE
