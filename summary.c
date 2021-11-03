@@ -3,7 +3,7 @@
 Vertex * calcCentroid(Polygon* poly)
 {
 
-    int xSum = 0, ySum = 0;
+    float xSum = 0.0, ySum = 0.0;
 
     for(int g = 0 ; g < poly->numberOfVertices ; g++)
     {
@@ -11,7 +11,7 @@ Vertex * calcCentroid(Polygon* poly)
         ySum = ySum + poly->vertexList[g].y;
     }
 
-    printf("Centroid = (%d , %d)\n", xSum/poly->numberOfVertices , ySum/poly->numberOfVertices);
+    printf("Centroid = (%.1f , %.1f)\n", xSum/poly->numberOfVertices , ySum/poly->numberOfVertices);
 
 }
 
